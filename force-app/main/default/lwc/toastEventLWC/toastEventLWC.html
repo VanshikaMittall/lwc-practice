@@ -1,0 +1,22 @@
+<template>
+   <lightning-card icon-name="standard:account" variant="base">
+     <div slot="title">
+         Toast Event Buttons
+     </div>
+     <div slot="actions">
+   
+     </div>
+     <div slot="footer">
+   
+     </div>
+     <div>
+        <lightning-button variant="base" label="Error Button" title="Looks like a link" onclick={handleErrorClick} class="slds-m-left_x-small"></lightning-button>
+        <br>
+        <lightning-button variant="base" label="Success Button" title="Looks like a link" onclick={handleSuccessClick} class="slds-m-left_x-small"></lightning-button>
+        <br>
+        <lightning-button variant="base" label="Warning Button" title="Looks like a link" onclick={handleWarningClick} class="slds-m-left_x-small"></lightning-button>
+        <br>
+        <lightning-button variant="base" label="Information Button" title="Looks like a link" onclick={handleInfoClick} class="slds-m-left_x-small"></lightning-button>
+     </div>
+   </lightning-card> 
+</template>
