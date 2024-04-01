@@ -1,0 +1,26 @@
+<template>
+    <lightning-card icon-name="standard:account" variant="base">
+      <div slot="title">
+        Display Inputs 
+      </div>
+      <div slot="actions">
+    
+      </div>
+      <div slot="footer">
+    
+      </div>
+      <div class="container">
+        <label for="Fname">Enter First Name</label><br>
+        <input type="text" name="Fname" id="Fname" value={Fname} onchange={handleClick} placeholder="First Name" required><br>
+        <label for="Lname">Enter Last Name</label><br>
+        <input type="text" name="Lname" id="Lname" value={Lname} onchange={handleClick} placeholder="Last Name" required><br>
+        <label for="Email">Enter Email Id</label><br>
+        <input type="email" name="Email" id="Email" value={Email} onchange={handleClick} placeholder="abc@gmail.com" required><br>
+        <label for="Phone">Enter Phone Number</label><br>
+        <input type="number" name="Phone" id="Phone" value={Phone} onchange={handleClick}><br>
+        <label for="Title">Enter Title</label><br>
+        <input type="text" name="Title" id="Title" value={Title} onchange={handleClick} placeholder="Title"><br><br>
+        <lightning-button variant="Submit" label="Submit" title="Successful action" onclick={Click} class="slds-m-left_x-small"></lightning-button>
+         </div>
+    </lightning-card>
+</template>
