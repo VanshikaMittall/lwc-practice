@@ -1,0 +1,12 @@
+<template>
+<lightning-card title="Create New Account Record" icon-name="Accounts">
+    <div class="container">
+        <lightning-input label="Name" value={record.Name} onchange={handleNameChange}></lightning-input><br>
+        <lightning-input label="Phone" value={record.Phone} onchange={handlePhoneChange}></lightning-input><br>
+        <lightning-input label="Industry" value={record.Industry} onchange={handleIndustryChange}></lightning-input><br>
+        <lightning-input label="Rating" value={record.Rating} onchange={handleRatingChange}></lightning-input><br>
+        <lightning-input label="AnnualRevenue" value={record.AnnualRevenue} onchange={handleAnnualRevenueChange}></lightning-input><br>
+        <lightning-button label="Insert Record" onclick={handleInsertButton}></lightning-button>
+    </div>
+</lightning-card>    
+</template>
