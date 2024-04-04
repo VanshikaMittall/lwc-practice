@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <div>Accounts Picklist</div>
+        <div>
+            <select > 
+                <template for:each={Accounts.data} for:item="acc">
+                    <option key={acc.Id} value={acc.Name}> {acc.Name}</option>
+                </template>
+            </select>
+        </div>
+    </lightning-card>
+</template>
