@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Account Contact List">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <lightning-combobox
+                  label="Account"
+                  placeholder="Select Account"
+                  options={Accounts}
+                  onchange={handleChange} 
+                ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                    <template if:true={Contacts.data}>
+                    <template for:each={Contacts.data} for:item="con">
+                        <tr key={con.Id}> <td>{con.FirstName} {con.LastName}</td> <td>{con.Email} </td></tr>
+                    </template>
+                </template>
+                </table>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
