@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Opportunity Contacts Related to Account">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <lightning-combobox
+                label="Account"
+                placeholder="Select Account"
+                options={Accounts}
+                value={accId}
+                onchange={handleChange}
+                ></lightning-combobox>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout-item>
+            <div style="height: 150px;" title="Opportunities">
+                <lightning-datatable
+                    key-field="id"
+                    data={Oppdata}
+                    columns={Oppcolumns}
+                ></lightning-datatable>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <div style="height: 150px;" title="Contacts">
+                <lightning-datatable
+                    key-field="id"
+                    data={Condata}
+                    columns={Concolumns}
+                ></lightning-datatable>
+            </div>
+        </lightning-layout-item>
+    </lightning-card>
+</template>

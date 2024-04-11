@@ -1,12 +1,12 @@
 import { LightningElement, api, track, wire } from 'lwc';
 
-import Account_Record from '@salesforce/apex/FetchContactsfromAccount.fetchAccount';
-import Contact_Record from '@salesforce/apex/FetchContactsfromAccount.fetchContact';
+import fetchAccount from '@salesforce/apex/FetchContactsfromAccount.fetchAccount';
+import fetchContact from '@salesforce/apex/FetchContactsfromAccount.fetchContact';
 
 export default class AccountContactList extends LightningElement {
     @track accId= ' ';
     @api Accounts=[];
-    @wire(Account_Record)wiredAccount({data, error}){
+    @wire(fetchAccount)wiredAccount({data, error}){
         if(data){
             this.Accounts=[];
             data.forEach(element => {
@@ -23,6 +23,6 @@ export default class AccountContactList extends LightningElement {
     handleChange(event){
         this.accId=event.detail.value;
     }
-    @wire(Contact_Record,{accId: '$accId'})
+    @wire(fetchContact,{accId: '$accId'})
     Contacts;
 }
