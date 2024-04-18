@@ -1,28 +1,28 @@
 <template>
-  
+    
     <lightning-card title="Calculator">
         <div class="Container">
             <div>
                 <label for="num1">Number 1:  </label>
-                <input type="number" id="num1" placeholder="Enter First Number"  name="num1" onchange={values} value={num1} required>
+                <input type="Number" id="num1" placeholder="Enter First Number" required>
             </div>
             <br><br>
             <div>
                 <label for="num2">Number 2:  </label>
-                <input type="number" id="num2" placeholder="Enter Second Number" name="num2" onchange={values} value={num2} required>
+                <input type="Number" id="num2" placeholder="Enter Second Number" required>
             </div>
             <br><br>
             <label for="opr">Choose Operation: </label>
-            <select id="opr" onchange={selectOperand}>
+            <select id="opr" onchange={handleSelectChange}>
                 <option value="Addition">Addition</option>
                 <option value="Substraction">Substraction</option>
                 <option value="Multiplication">Multiplication</option>
                 <option value="Division">Division</option>
             </select>
             <br><br>
-            <button id="eval" onclick={calculateValue}>Evaluate </button>
+            <button id="eval">Evaluate  onclick={calculateValue}</button>
             <br><br>
-            The Result is: {result}
+            The Result is: {Result}
         </div>
     </lightning-card>
- </template>
+</template>

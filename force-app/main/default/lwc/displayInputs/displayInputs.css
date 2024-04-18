@@ -1,4 +1,3 @@
-.container{
-    margin: 20px;
-    padding: 20px;
+.slds-card {
+    height: 300px; /* Example: Adjust height as needed */
 }

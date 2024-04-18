@@ -1,0 +1,104 @@
+<template>
+    <lightning-card>
+        <lightning-button class="slds-align_absolute-center" label="Send Email" title="Send Email"
+            onclick={showModalBox}></lightning-button>
+
+        <!-- modal start -->
+        <template if:true={isShowModal}>
+
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={hideModalBox}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <div class="slds-text-align_left">
+                            <h2 id="modal-heading-01" class="slds-text-body_regular">
+                                New Message</h2>
+                        </div>
+                    </header>
+
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                        <lightning-input value={toEmail} class="slds-text-body_small slds-text-align_left " label="To"
+                            name="To" onchange={handleBodyChange} onkeypress={handleToPill}
+                            data-index={index}></lightning-input>
+                        <lightning-pill-container items={ToArr} onitemremove={removeToPill}></lightning-pill-container>
+
+                        <lightning-input value={ccEmail} class="slds-text-body_small slds-text-align_left " label="Cc"
+                            name="Cc" onchange={handleBodyChange} onkeypress={handleToPillCC}
+                            data-index={index}></lightning-input>
+                        <lightning-pill-container items={CcArr} onitemremove={removeCcPill}></lightning-pill-container>
+
+                        <lightning-input value={bccEmail} class="slds-text-body_small slds-text-align_left " label="Bcc"
+                            name="Bcc" onchange={handleBodyChange} onkeypress={handleToPillBCC}
+                            data-index={index}></lightning-input>
+                        <lightning-pill-container items={BccArr}
+                            onitemremove={removeBccPill}></lightning-pill-container>
+
+                        <lightning-input class="slds-text-body_small slds-text-align_left " label="Subject"
+                            name="Subject" placeholder="Enter Subject..." value={subject}
+                            onchange={handleBodyChange}></lightning-input>
+
+                        <lightning-input-rich-text value={body} name="body" onchange={handleBodyChange}>
+
+                            <lightning-icon icon-name="doctype:attachment" size="xx-small"
+                                alternative-text="attach"></lightning-icon>
+
+                        </lightning-input-rich-text>
+
+                        <template for:each={files} for:item="file" for:index="index">
+                            <lightning-pill key={file.contentVersionId} label={file.name} onremove={handleRemove}
+                                data-id={file.contentVersionId} data-index={index}>
+                            </lightning-pill>
+
+                        </template>
+                    </div>
+
+                    <!-- modal footer start-->
+
+                    <footer class="slds-modal__footer">
+
+                        <lightning-button-icon icon-name="utility:attach" onclick={toggleFileUpload}
+                            alternative-text="Attach File" title="Attach_File">
+                        </lightning-button-icon>
+                        <template if:true={wantToUploadFile}>
+
+                            <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+                                class="slds-modal slds-fade-in-open">
+                                <div class="slds-modal__container">
+                                    <div class="slds-modal__header"
+                                        style="box-shadow: 2px 2px 3px 2px rgb(138, 170, 181)">
+                                        <lightning-file-upload label="Attach files" name="fileUploader"
+                                            record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+                                        </lightning-file-upload>
+                                    </div>
+                                    <div class="slds-modal__footer"
+                                        style="box-shadow: 2px 2px 3px 2px rgb(138, 170, 181)">
+                                        <button class="slds-button slds-button_brand" aria-label="Cancel"
+                                            onclick={handleCloseAttchment}>Cancel</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </template>
+
+                        <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+
+                        <button class="slds-button slds-button_brand" onclick={SendEmail}>Send</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </template>
+
+        <!-- modal end -->
+    </lightning-card>
+</template>
