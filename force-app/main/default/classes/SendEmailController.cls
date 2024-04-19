@@ -13,17 +13,7 @@ public with sharing class SendEmailController {
         }
         mail.setSubject(emailDetails.subject);
         mail.setHtmlBody(emailDetails.body);
-
-        List<Messaging.EmailFileAttachment> attachments = new List<Messaging.EmailFileAttachment>();
-        for(String fileContent : emailDetails.file) {
-            Messaging.EmailFileAttachment attachment = new Messaging.EmailFileAttachment();
-            attachment.setFileName('attchment.png');  // Set the file name
-            attachment.setBody(EncodingUtil.base64Decode(fileContent));  // Convert string to blob
-            attachment.setContentType('image/png');
-            attachments.add(attachment);
-        }
-        // Set file attachments
-        mail.setFileAttachments(attachments);
+        mail.setEntityAttachments(emailDetails.file);
             
         // Send the email
         Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ mail });
